@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class RockPaperScissorTest {
-RockPaperScissor rps;
+    RockPaperScissor rps;
     @BeforeMethod
     public void setUp() {
         rps= new RockPaperScissor();
@@ -16,23 +16,19 @@ RockPaperScissor rps;
     public void tearDown() {
         rps=null;
     }
-
     @Parameters({"papier","pierre"})
     @Test
     public void testPlayWin(String p1,String p2) {
         assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.WIN);
     }
-
     @Parameters({"papier","papier"})
     @Test
     public void testPlayTie(String p1,String p2) {
         assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.TIE);
     }
-    @Parameters({"ciseau","pierre"})
+    @Parameters({"papier","ciseau"})
     @Test
     public void testPlayLost(String p1,String p2) {
         assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.LOST);
     }
-
 }
-
