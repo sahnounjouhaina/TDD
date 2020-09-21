@@ -23,15 +23,16 @@ RockPaperScissor rps;
         assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.WIN);
     }
 
-    @Parameters({"ciseau","pierre"})
-    @Test
-    public void testPlayLost(String p1,String p2) {
-        assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.LOST);
-    }
     @Parameters({"papier","papier"})
     @Test
     public void testPlayTie(String p1,String p2) {
         assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.TIE);
     }
+    @Parameters({"ciseau","pierre"})
+    @Test
+    public void testPlayLost(String p1,String p2) {
+        assertEquals(rps.play(Play.valueOf(p1),Play.valueOf(p2)),Result.LOST);
+    }
+
 }
-}
+
