@@ -60,9 +60,40 @@ public class RockPaperScissor {
             default:
                 break;
         }
-
-
         return r;
     }
 
-}
+
+        public Result play(Player p1, Player p2) {
+            Result r = Result.LOST;
+            p1.resetMoves();
+            p2.resetMoves();
+
+            int minMoves = Math.min(p1.getNbMoves(), p2.getNbMoves());
+            for (int i = 0; i < minMoves; i++) {
+                switch (play(p1.getNextMove(), p2.getNextMove())) {
+                    case WIN:
+                        p1.setScore(p1.getScore() + 1);
+                        break;
+                    case LOST:
+                        p2.setScore(p1.getScore() + 1);
+                        break;
+                    case TIE:
+                        p1.setScore(p1.getScore() + 1);
+                        p2.setScore(p1.getScore() + 1);
+                        break;
+                }
+            }
+            if (p1.getScore() > p2.getScore()) {
+                r = Result.WIN;
+            } else {
+                r = Result.LOST;
+            }
+
+            return r;
+        }
+
+
+    }
+
+
